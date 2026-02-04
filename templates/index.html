@@ -1,0 +1,108 @@
+<!-- index.html This is the main HTML template for the aggrepage web application. -->
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>aggrepage</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/static/styless.css">
+</head>
+<body class="app-body">
+  <header class="topbar">
+    <div class="logo-wrap">
+      <div class="logo-circle">A</div>
+      <div>
+        <div class="logo-text">aggrepage</div>
+        <div class="logo-sub">Kuratiertes Politik‑Briefing aus vielen Quellen</div>
+      </div>
+    </div>
+    <div class="top-actions">
+      <a href="/logout" class="logout-link">Logout</a>
+      <button id="reload-btn">Liste aktualisieren</button>
+      <span id="status-text"></span>
+    </div>
+  </header>
+
+  <nav class="tabs-bar">
+    <button class="tab-btn active" data-view="austria">Österreich</button>
+    <button class="tab-btn" data-view="international">International</button>
+    <button class="tab-btn" data-view="good_news">Good News</button>
+    <button class="tab-btn" data-view="investigativ">Investigativ</button>
+    <button class="tab-btn" data-view="reddit_politics">Reddit</button>
+    <button class="tab-btn" data-view="fundgrube">Fundgrube</button>
+  </nav>
+
+  <div class="layout-main">
+    <main class="content">
+      <header class="fundgrube-header">
+        <h1 id="view-title">Österreich</h1>
+        <button id="fundgrube-add-btn" class="icon-btn hidden">+</button>
+      </header>
+      <div id="posts-container"></div>
+    </main>
+
+    <aside class="activity-bar">
+      <h2>Team‑Chat</h2>
+      <div id="chat-messages" class="activity-list"></div>
+      <form id="chat-form" class="chat-form">
+        <input id="chat-input" type="text" placeholder="Nachricht…" autocomplete="off">
+        <button type="submit">Senden</button>
+      </form>
+    </aside>
+  </div>
+
+  <!-- Kommentar-Modal -->
+  <div id="comment-modal" class="modal hidden">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <span id="comment-modal-title"></span>
+        <button id="comment-modal-close">×</button>
+      </div>
+      <div id="comment-list" class="comment-list"></div>
+      <form id="comment-form" class="comment-form">
+        <input type="hidden" id="comment-post-id">
+        <textarea id="comment-text" rows="3" placeholder="Kommentar …"></textarea>
+        <div class="modal-actions">
+          <button type="button" id="comment-cancel">Abbrechen</button>
+          <button type="submit">Senden</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Fundgrube-Modal -->
+  <div id="fundgrube-modal" class="modal hidden">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <span>Fundgrube‑Artikel hinzufügen</span>
+        <button id="fundgrube-close">×</button>
+      </div>
+      <form id="fundgrube-form" class="fundgrube-form">
+        <label>URL
+          <input type="url" name="url" required>
+        </label>
+        <label>Titel (optional)
+          <input type="text" name="title">
+        </label>
+        <label>Bild (optional)
+          <input type="file" name="image" accept="image/*">
+        </label>
+        <div class="modal-actions">
+          <button type="button" id="fundgrube-cancel">Abbrechen</button>
+          <button type="submit">Speichern</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Bild-Zoom-Modal -->
+  <div id="image-modal" class="modal hidden">
+    <div class="modal-dialog image-modal-dialog">
+      <button id="image-modal-close" class="image-modal-close">×</button>
+      <img id="image-modal-img" src="" alt="">
+    </div>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
